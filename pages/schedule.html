@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日程 | 広研ラスペア tour</title>
+  <meta
+    name="description"
+    content="広研ラスペア旅行のしおり。Day 1 と Day 2 の流れをタブで切り替えて確認できます。"
+  >
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="schedule-page">
+  <div class="page-shell subpage-shell">
+    <nav class="topbar page-topbar">
+      <a class="brand" href="../index.html">
+        <span class="brand-script">tour</span>
+        <span class="brand-main">広研ラスペア</span>
+      </a>
+      <div class="topbar-links">
+        <a class="is-active" href="schedule.html">日程</a>
+        <a href="rules.html">ルール</a>
+        <a href="members.html">メンバー</a>
+        <a href="packing.html">持ち物</a>
+        <a href="appendix.html">付録</a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="page-masthead">
+        <p class="eyebrow">日程</p>
+        <h1>SCHEDULE</h1>
+      </header>
+
+      <section class="section compact-section">
+        <div class="schedule-tabs" data-tabs>
+          <div class="schedule-tablist" role="tablist" aria-label="日程タブ">
+            <button
+              class="schedule-tab is-active"
+              id="tab-day1"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-day1"
+              data-tab-target="day1"
+            >
+              <span>Day 1</span>
+              <strong>7.11 [<span class="day-sat">Sat.</span>]</strong>
+            </button>
+            <button
+              class="schedule-tab"
+              id="tab-day2"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-day2"
+              data-tab-target="day2"
+              tabindex="-1"
+            >
+              <span>Day 2</span>
+              <strong>7.12 [<span class="day-sun">Sun.</span>]</strong>
+            </button>
+          </div>
+
+          <article
+            class="day-card schedule-panel is-active"
+            id="panel-day1"
+            role="tabpanel"
+            aria-labelledby="tab-day1"
+            data-tab-panel="day1"
+          >
+            <header>
+              <span class="day-badge">Day 1</span>
+              <h3>7.11 [<span class="day-sat">Sat.</span>]</h3>
+            </header>
+            <ol class="timeline">
+              <li><time>10:00</time><div><strong>各自集合＆出発</strong><p>永谷car@新宿 / 前澤car@渋谷 / しゅえcar@渋谷</p></div></li>
+              <li><time>11:00</time><div><strong>全体集合</strong><p>幕張PAで合流</p></div></li>
+              <li><time>12:00</time><div><strong>現地到着</strong><p>楽しみまくるぞい</p></div></li>
+              <li><time>12:30</time><div><strong>昼食</strong><p>浜焼き食べよう</p></div></li>
+              <li><time>15:00</time><div><strong>買い出し</strong><p>必要なものをまとめて確保</p></div></li>
+              <li><time>16:00</time><div><strong>着替え＆ビーチ</strong><p>海に入る人はここから準備</p></div></li>
+              <li><time>17:00</time><div><strong>砂遊び</strong><p>写真タイムにもよさそう</p></div></li>
+              <li><time>18:30</time><div><strong>風呂＆BBQ</strong><p>夜イベントのメイン</p></div></li>
+              <li><time>21:00</time><div><strong>超豪華エアビ</strong><p>宿で後半戦</p></div></li>
+              <li><time>22:00</time><div><strong>キックオフ</strong><p>乾杯タイム</p></div></li>
+            </ol>
+          </article>
+
+          <article
+            class="day-card alt schedule-panel"
+            id="panel-day2"
+            role="tabpanel"
+            aria-labelledby="tab-day2"
+            data-tab-panel="day2"
+            hidden
+          >
+            <header>
+              <span class="day-badge">Day 2</span>
+              <h3>7.12 [<span class="day-sun">Sun.</span>]</h3>
+            </header>
+            <ol class="timeline">
+              <li><time>6:00</time><div><strong>就寝</strong><p>ドライバーは 5:00 就寝</p></div></li>
+              <li><time>9:30</time><div><strong>チェックアウト</strong><p>忘れ物に注意</p></div></li>
+              <li><time>10:30</time><div><strong>温泉で酔いさまし</strong><p>ゆっくり立て直す時間</p></div></li>
+              <li><time>13:00</time><div><strong>昼食</strong><p>海鮮丼などをたべよう</p></div></li>
+              <li><time>18:00</time><div><strong>帰宅</strong><p>幕張へ</p></div></li>
+              <li><time>20:00</time><div><strong>全体解散</strong><p>幕張PA</p></div></li>
+              <li><time>21:00</time><div><strong>個別解散</strong><p>おつかれさまでした</p></div></li>
+            </ol>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="../index.html">トップへ戻る</a>
+      <a href="rules.html">次へ: ルール</a>
+    </footer>
+  </div>
+  <script src="../script.js"></script>
+</body>
+</html>
