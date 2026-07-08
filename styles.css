@@ -296,8 +296,7 @@ header.home-hero + main > .section:first-child {
   padding-top: 0.35rem;
 }
 
-.home-page .feature-grid {
-}
+
 
 .home-page .feature-card {
   min-height: 14.5rem;
@@ -449,24 +448,29 @@ header.home-hero + main > .section:first-child {
   gap: 0.3rem;
   width: 100%;
   padding: 1rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(24, 37, 52, 0.06);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.62);
-  color: var(--muted);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.42);
+  color: rgba(82, 98, 115, 0.72);
+  box-shadow: 0 12px 28px rgba(25, 55, 75, 0.08);
+  backdrop-filter: blur(12px);
+  opacity: 0.74;
   cursor: pointer;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
 }
 
 .schedule-tab:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  opacity: 0.86;
 }
 
 .schedule-tab.is-active {
   border-color: rgba(79, 185, 212, 0.55);
   background: rgba(255, 255, 255, 0.88);
   color: var(--ink);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  opacity: 1;
 }
 
 .schedule-tab > span {
@@ -475,6 +479,10 @@ header.home-hero + main > .section:first-child {
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: rgba(35, 129, 163, 0.78);
+}
+
+.schedule-tab.is-active > span {
   color: var(--ocean-deep);
 }
 
