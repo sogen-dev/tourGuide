@@ -80,6 +80,30 @@ const PROMO_IMAGES = [
   "../assets/ads/ad-5.jpg",
 ];
 
+const PROMO_VARIANTS = [
+  {
+    badge: "期間限定",
+    meta: "SPONSORED",
+    title: "今だけ 1タップで応援",
+    body: "そうぽち受付中",
+    cta: "プロフィールを見る",
+  },
+  {
+    badge: "PICK UP",
+    meta: "TRENDING NOW",
+    title: "推し活するならこちら",
+    body: "気になったら今すぐチェック",
+    cta: "今すぐ見る",
+  },
+  {
+    badge: "急上昇",
+    meta: "RECOMMEND",
+    title: "見つけた人だけの注目枠",
+    body: "そうぽち導線はこちら",
+    cta: "詳細を見る",
+  },
+];
+
 const PROMO_LINK = "https://miscolle.com/tokyo2026/profile/m2";
 const promoParams = new URLSearchParams(window.location.search);
 const shouldForcePromo = promoParams.get("showPromo") === "1";
@@ -95,20 +119,23 @@ const createPromoPopup = () => {
   }
 
   const selectedImage = PROMO_IMAGES[Math.floor(Math.random() * PROMO_IMAGES.length)];
+  const selectedVariant = PROMO_VARIANTS[Math.floor(Math.random() * PROMO_VARIANTS.length)];
   const overlay = document.createElement("aside");
   overlay.className = "promo-popup";
-  overlay.setAttribute("aria-label", "おすすめリンク");
+  overlay.setAttribute("aria-label", "広告ポップアップ");
 
   overlay.innerHTML = `
     <div class="promo-popup__backdrop" data-promo-close></div>
     <div class="promo-popup__panel" role="dialog" aria-modal="true" aria-labelledby="promo-popup-title">
-      <button class="promo-popup__close" type="button" aria-label="閉じる" data-promo-close>×</button>
+      <button class="promo-popup__close" type="button" aria-label="閉じる" data-promo-close>&times;</button>
       <a class="promo-popup__link" href="${PROMO_LINK}" target="_blank" rel="noreferrer">
-        <span class="promo-popup__badge">PICK UP</span>
+        <span class="promo-popup__badge">${selectedVariant.badge}</span>
         <img class="promo-popup__image" src="${selectedImage}" alt="そうぽち案内バナー">
         <span class="promo-popup__copy">
-          <strong id="promo-popup-title">そうぽちはこちら</strong>
-          <span>Tap to vote</span>
+          <span class="promo-popup__meta">${selectedVariant.meta}</span>
+          <strong id="promo-popup-title">${selectedVariant.title}</strong>
+          <p>${selectedVariant.body}</p>
+          <span class="promo-popup__cta">${selectedVariant.cta}</span>
         </span>
       </a>
     </div>
