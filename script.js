@@ -107,8 +107,8 @@ const REGULAR_PROMO_VARIANTS = [
 const LUCKY_PROMO = {
   image: "../assets/ads/lucky-popup.jpg",
   badge: "1 / 100 LUCKY",
-  meta: "SECRET POPUP",
-  title: "おおあたり！",
+  meta: "SECRET",
+  title: "大当たり！",
   body: "これを見つけられた子はラッキー！",
   cta: "ラッキー枠を見る",
 };
