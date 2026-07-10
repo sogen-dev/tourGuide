@@ -1256,6 +1256,45 @@ input[type="checkbox"] {
   box-shadow: 0 16px 28px rgba(24, 37, 52, 0.22);
 }
 
+.promo-popup--lucky .promo-popup__panel {
+  background:
+    linear-gradient(135deg, rgba(255, 248, 252, 0.98), rgba(255, 240, 249, 0.94)),
+    linear-gradient(135deg, rgba(255, 137, 186, 0.24), rgba(255, 196, 91, 0.12));
+}
+
+.promo-popup--lucky .promo-popup__link::before {
+  background:
+    radial-gradient(circle at top right, rgba(255, 176, 215, 0.62), transparent 28%),
+    radial-gradient(circle at left, rgba(255, 107, 126, 0.28), transparent 36%);
+}
+
+.promo-popup--lucky .promo-popup__badge {
+  background: linear-gradient(135deg, #ff4fa2, #ff8cc7);
+  box-shadow: 0 12px 24px rgba(255, 79, 162, 0.34);
+}
+
+.promo-popup--lucky .promo-popup__meta {
+  background: rgba(255, 214, 236, 0.2);
+}
+
+.promo-popup--lucky .promo-popup__copy strong {
+  color: #ff9ac7;
+  text-shadow:
+    0 10px 24px rgba(24, 37, 52, 0.34),
+    0 0 18px rgba(255, 120, 181, 0.24);
+}
+
+.promo-popup--lucky .promo-popup__copy p {
+  color: #ffc6e0;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.promo-popup--lucky .promo-popup__cta {
+  background: linear-gradient(135deg, #fff7fb, #ffd0e8);
+  color: #b43c7c;
+}
+
 @media (max-width: 720px) {
   .promo-popup__panel {
     width: min(20rem, calc(100vw - 1.5rem));

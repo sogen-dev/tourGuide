@@ -80,7 +80,7 @@ const PROMO_IMAGES = [
   "../assets/ads/ad-5.jpg",
 ];
 
-const PROMO_VARIANTS = [
+const REGULAR_PROMO_VARIANTS = [
   {
     badge: "期間限定",
     meta: "SPONSORED",
@@ -104,24 +104,24 @@ const PROMO_VARIANTS = [
   },
 ];
 
+const LUCKY_PROMO = {
+  image: "../assets/ads/lucky-popup.jpg",
+  badge: "1 / 100 LUCKY",
+  meta: "SECRET POPUP",
+  title: "おおあたり！",
+  body: "これを見つけられた子はラッキー！",
+  cta: "ラッキー枠を見る",
+};
+
 const PROMO_LINK = "https://miscolle.com/tokyo2026/profile/m2";
 const promoParams = new URLSearchParams(window.location.search);
 const shouldForcePromo = promoParams.get("showPromo") === "1";
 const shouldBlockPromo = promoParams.get("showPromo") === "0";
+const shouldForceLuckyPromo = promoParams.get("showLuckyPromo") === "1";
 
-const createPromoPopup = () => {
-  if (document.body.classList.contains("home-page") || shouldBlockPromo) {
-    return;
-  }
-
-  if (!shouldForcePromo && Math.random() >= 0.34) {
-    return;
-  }
-
-  const selectedImage = PROMO_IMAGES[Math.floor(Math.random() * PROMO_IMAGES.length)];
-  const selectedVariant = PROMO_VARIANTS[Math.floor(Math.random() * PROMO_VARIANTS.length)];
+const createPromoPopupElement = ({ image, badge, meta, title, body, cta, modifierClass = "" }) => {
   const overlay = document.createElement("aside");
-  overlay.className = "promo-popup";
+  overlay.className = `promo-popup ${modifierClass}`.trim();
   overlay.setAttribute("aria-label", "広告ポップアップ");
 
   overlay.innerHTML = `
@@ -129,13 +129,13 @@ const createPromoPopup = () => {
     <div class="promo-popup__panel" role="dialog" aria-modal="true" aria-labelledby="promo-popup-title">
       <button class="promo-popup__close" type="button" aria-label="閉じる" data-promo-close>&times;</button>
       <a class="promo-popup__link" href="${PROMO_LINK}" target="_blank" rel="noreferrer">
-        <span class="promo-popup__badge">${selectedVariant.badge}</span>
-        <img class="promo-popup__image" src="${selectedImage}" alt="そうぽち案内バナー">
+        <span class="promo-popup__badge">${badge}</span>
+        <img class="promo-popup__image" src="${image}" alt="ポップアップバナー">
         <span class="promo-popup__copy">
-          <span class="promo-popup__meta">${selectedVariant.meta}</span>
-          <strong id="promo-popup-title">${selectedVariant.title}</strong>
-          <p>${selectedVariant.body}</p>
-          <span class="promo-popup__cta">${selectedVariant.cta}</span>
+          <span class="promo-popup__meta">${meta}</span>
+          <strong id="promo-popup-title">${title}</strong>
+          <p>${body}</p>
+          <span class="promo-popup__cta">${cta}</span>
         </span>
       </a>
     </div>
@@ -165,6 +165,54 @@ const createPromoPopup = () => {
     overlay.classList.add("is-visible");
   });
   document.addEventListener("keydown", onKeydown);
+};
+
+const createPromoPopup = () => {
+  if (document.body.classList.contains("home-page") || shouldBlockPromo) {
+    return;
+  }
+
+  if (shouldForceLuckyPromo) {
+    createPromoPopupElement({
+      image: LUCKY_PROMO.image,
+      badge: LUCKY_PROMO.badge,
+      meta: LUCKY_PROMO.meta,
+      title: LUCKY_PROMO.title,
+      body: LUCKY_PROMO.body,
+      cta: LUCKY_PROMO.cta,
+      modifierClass: "promo-popup--lucky",
+    });
+    return;
+  }
+
+  if (!shouldForcePromo && Math.random() < 0.01) {
+    createPromoPopupElement({
+      image: LUCKY_PROMO.image,
+      badge: LUCKY_PROMO.badge,
+      meta: LUCKY_PROMO.meta,
+      title: LUCKY_PROMO.title,
+      body: LUCKY_PROMO.body,
+      cta: LUCKY_PROMO.cta,
+      modifierClass: "promo-popup--lucky",
+    });
+    return;
+  }
+
+  if (!shouldForcePromo && Math.random() >= 0.34) {
+    return;
+  }
+
+  const selectedImage = PROMO_IMAGES[Math.floor(Math.random() * PROMO_IMAGES.length)];
+  const selectedVariant = REGULAR_PROMO_VARIANTS[Math.floor(Math.random() * REGULAR_PROMO_VARIANTS.length)];
+
+  createPromoPopupElement({
+    image: selectedImage,
+    badge: selectedVariant.badge,
+    meta: selectedVariant.meta,
+    title: selectedVariant.title,
+    body: selectedVariant.body,
+    cta: selectedVariant.cta,
+  });
 };
 
 createPromoPopup();
