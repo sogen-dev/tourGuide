@@ -93,13 +93,13 @@ const REGULAR_PROMO_VARIANTS = [
     meta: "TRENDING NOW",
     title: "推し活するならこちら",
     body: "気になったら今すぐチェック",
-    cta: "今すぐ見る",
+    cta: "今すぐそうぽちする",
   },
   {
     badge: "急上昇",
     meta: "RECOMMEND",
     title: "見つけた人だけの注目枠",
-    body: "そうぽち導線はこちら",
+    body: "そうぽちはこちら",
     cta: "詳細を見る",
   },
 ];
